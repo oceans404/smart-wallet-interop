@@ -26,6 +26,8 @@ Fees are a third gap (a smart wallet can't pay its own), but a relayer can alway
 
 The short version: **send** is already solved at the protocol level (muxed addresses, [CAP-67](https://github.com/stellar/stellar-protocol/blob/master/core/cap-0067.md)) and needs exchanges and wallets to adopt it. **Receive** needs either each partner to upgrade or a protocol bridge.
 
+Obvious ideas that don't work: [why-not.md](why-not.md).
+
 ## Background
 
 * [CAP-72 discussion #1763](https://github.com/orgs/stellar/discussions/1763): the main protocol debate
