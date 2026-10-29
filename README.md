@@ -10,8 +10,8 @@ It comes down to two separate problems:
 
 | | Problem | Why |
 | --- | --- | --- |
-| **Send** | A smart wallet's deposit to an exchange can't be matched to the user | Exchanges match deposits by memo, and a smart wallet's payment (a token contract call) can't carry one |
-| **Receive** | Exchanges and ramps can't pay a smart wallet | They send classic payment operations, which can only reach `G...` addresses |
+| **Send** | A smart wallet's deposit to an exchange, or cash-out to an anchor, can't be matched | Both match payments by memo, and a smart wallet's payment (a token contract call) can't carry one |
+| **Receive** | Exchanges and anchors can't pay a smart wallet | They send classic payment operations, which can only reach `G...` addresses |
 
 Fees are a third gap (a smart wallet can't pay its own), but a relayer can always cover that, so it's out of scope here.
 

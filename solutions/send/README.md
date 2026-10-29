@@ -1,6 +1,6 @@
-# Send: smart wallet deposits to exchanges
+# Send: smart wallets paying exchanges and anchors
 
-**Solves:** deposits from smart wallets get credited to the right user.
+**Solves:** exchange deposits and anchor cash-outs from smart wallets get matched to the right user or transaction.
 **Protocol change:** none. Works on mainnet since Protocol 23 ([CAP-67](https://github.com/stellar/stellar-protocol/blob/master/core/cap-0067.md)).
 
 A smart wallet can't attach a memo, but it can pay a muxed (`M...`) address: the exchange's `G...` address with the memo ID packed inside. Both sides have to change.
@@ -22,6 +22,14 @@ const muxed = new MuxedAccount(new Account("G...", "0"), "1234").accountId(); //
 3. Keep the SEP-29 memo required flag set on deposit accounts.
 
 Users see no change. They still copy the exchange's address and memo.
+
+## Anchor (SEP-6/24 withdraw, SEP-31 send)
+
+The memo here is per transaction: it tells the anchor which payout to make.
+
+1. Return an ID memo (or an `M...` address) for each withdrawal. Text and hash memos can't reach the anchor from a smart wallet.
+2. Match smart-wallet-to-muxed payments by the muxed ID. [Anchor Platform](https://github.com/stellar/java-stellar-anchor-sdk/blob/2a4b58c3c90d3ca79a7216bd09b92143b2248616/platform/src/main/java/org/stellar/anchor/platform/observer/stellar/DefaultPaymentListener.java) already does this (`isContractToMuxed`).
+3. Support [SEP-45](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0045.md) sign-in for `C...` accounts (still Draft; Anchor Platform has it).
 
 ## Test cases
 
