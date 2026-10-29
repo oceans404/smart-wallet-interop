@@ -1,5 +1,6 @@
 import {
   Account,
+  Address,
   Asset,
   BASE_FEE,
   Horizon,
@@ -11,6 +12,7 @@ import {
   TransactionBuilder,
   authorizeEntry,
   rpc,
+  scValToNative,
   xdr,
 } from "@stellar/stellar-sdk";
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
@@ -88,8 +90,27 @@ type AuthSigner = (entry: xdr.SorobanAuthorizationEntry, expirationLedger: numbe
  * Submits a single InvokeHostFunction op from `source` (the relayer, who pays the fee).
  * When `signAuth` is given, address-credential auth entries from simulation are signed with it,
  * then the transaction is simulated again so the footprint covers `__check_auth`.
+ * A send rejected before reaching the ledger (e.g. a stale sequence number right after the
+ * previous transaction) is never applied, so it's rebuilt and retried.
  */
 export async function invoke(
+  source: Keypair,
+  op: xdr.Operation,
+  signAuth?: AuthSigner,
+): Promise<rpc.Api.GetSuccessfulTransactionResponse> {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await invokeOnce(source, op, signAuth);
+    } catch (err) {
+      if (!(err instanceof RejectedError) || attempt === 3) throw err;
+      await new Promise((r) => setTimeout(r, 3000));
+    }
+  }
+}
+
+class RejectedError extends Error {}
+
+async function invokeOnce(
   source: Keypair,
   op: xdr.Operation,
   signAuth?: AuthSigner,
@@ -123,7 +144,9 @@ export async function invoke(
   const prepared = rpc.assembleTransaction(tx, sim).build();
   prepared.sign(source);
   const sent = await rpcServer.sendTransaction(prepared);
-  if (sent.status === "ERROR") throw new Error(`Send failed: ${sent.errorResult?.toXDR("base64")}`);
+  if (sent.status === "ERROR" || sent.status === "TRY_AGAIN_LATER") {
+    throw new RejectedError(`Send ${sent.status}: ${sent.errorResult?.toXdr("base64") ?? ""}`);
+  }
   const final = await rpcServer.pollTransaction(sent.hash, { attempts: 30 });
   if (final.status !== rpc.Api.GetTransactionStatus.SUCCESS) {
     throw new Error(`Transaction ${sent.hash} ended as ${final.status}`);
@@ -142,4 +165,16 @@ export function walletSigner(owner: Keypair): AuthSigner {
     );
 }
 
-export const stroopsToXlm = (stroops: bigint | string): string => (Number(stroops) / 1e7).toFixed(7);
+/** XLM balance of any address (G or C), read through the token contract. `reader` is any funded account; nothing is submitted. */
+export async function xlmBalance(address: string, reader: string): Promise<bigint> {
+  const account = await rpcServer.getAccount(reader);
+  const tx = new TransactionBuilder(account, { fee: BASE_FEE, networkPassphrase: NETWORK })
+    .addOperation(Operation.invokeContractFunction({ contract: XLM_SAC, function: "balance", args: [new Address(address).toScVal()] }))
+    .setTimeout(60)
+    .build();
+  const sim = await rpcServer.simulateTransaction(tx);
+  if (rpc.Api.isSimulationError(sim) || !sim.result) throw new Error(`balance(${address}) failed`);
+  return scValToNative(sim.result.retval) as bigint;
+}
+
+export const stroopsToXlm =(stroops: bigint | string): string => (Number(stroops) / 1e7).toFixed(7);

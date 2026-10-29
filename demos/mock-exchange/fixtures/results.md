@@ -6,10 +6,10 @@
 | 4 | Classic payment to M address (ID 1004) that also has memo 9999 | 1004 | credited 9999 | credited 1004 |
 | 5 | Smart wallet transfer to the plain G address | unattributed | not seen | unattributed |
 
-Exchange: `GDLR3V5ZKVXX7QRTIFKMUK6DDHZPDAU3RR4XCMEBGCUEB3XOCJYJ6M6W`
+Exchange: `GDMAYOLJXBUWR57S6VATXO55364SJP6KLPRCR7JQVWCRKACMXJJGBPHV`
 
-* Case 1: https://stellar.expert/explorer/testnet/tx/40bb579f7b2de3bf316174f44c829ade2c76d7e5ef9067ad5fe4c5ef074e6c4a
-* Case 2: https://stellar.expert/explorer/testnet/tx/8e28a5f1a3feb57475d31e68a9692bca49c1239dade181793b1fd1ca24746a68
-* Case 3: https://stellar.expert/explorer/testnet/tx/6cc9b47f11a18ca14c814abf1826a4f3a0a5b3914256536ffb43971e6decc9eb
-* Case 4: https://stellar.expert/explorer/testnet/tx/80a7b2495a6433b82d7066ddf61932c6effd725567ece9796faf6a5524b6ff9c
-* Case 5: https://stellar.expert/explorer/testnet/tx/416de50e1bf15bb868129722b19b02969bc25c15880c2b6638aefb47e2a3b470
+* Case 1: https://stellar.expert/explorer/testnet/tx/e00c5e158b098788796fed3fc379201b53f033ed97978c92c526679618cf2789
+* Case 2: https://stellar.expert/explorer/testnet/tx/5586dbc1e8963797652af8b373ae5829f3e06d00050a96bce81a3f221802cef9
+* Case 3: https://stellar.expert/explorer/testnet/tx/af91fe0ce84d1380205ec6eaafc5932fed2d270ae17c689dde0bf5b0de4fd98e
+* Case 4: https://stellar.expert/explorer/testnet/tx/3a3462ab9393cfad19cfae7371c703df6a7153f7984bbcbf021d54421dd179bb
+* Case 5: https://stellar.expert/explorer/testnet/tx/3b339ffed4af8da383da1e5d32bf54269405ad0c8b6377f37517d323826e1b7d

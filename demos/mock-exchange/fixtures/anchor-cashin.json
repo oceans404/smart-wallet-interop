@@ -1,0 +1,8 @@
+{
+  "wallet": "CDIXUQIE5KIFLKH4F42JXK5OI2IQVG32VGRF3OEGXMEDJQFTZL5LYQEE",
+  "transactionId": "15996cad-26b2-489a-8ca4-827349029ee3",
+  "finalStatus": "completed",
+  "message": "funds received, transaction is being processed",
+  "stellarTx": "e3d57929be5a1d1b529ea8d52a9bd499f34fadf1a101f24bc185ad25a2f5406e",
+  "receivedXlm": "1.8000000"
+}

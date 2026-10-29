@@ -7,9 +7,11 @@
     "setup": "tsx src/setup.ts",
     "send": "tsx src/send-cases.ts",
     "report": "tsx src/report.ts",
-    "demo": "npm run setup && npm run send && npm run report",
-    "typecheck": "tsc --noEmit",
-    "anchor": "tsx src/anchor-cashout.ts"
+    "withdraw": "tsx src/exchange-withdraw.ts",
+    "cashout": "tsx src/anchor-cashout.ts",
+    "cashin": "tsx src/anchor-cashin.ts",
+    "all": "npm run setup && npm run send && npm run report && npm run withdraw && npm run cashout && npm run cashin",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@stellar/stellar-sdk": "^17.4.0",
