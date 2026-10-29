@@ -49,10 +49,24 @@ npm run all              # everything above after the contract build
 
 Behind a proxy, set `NODE_USE_ENV_PROXY=1`.
 
+## Test your own deposit address
+
+Sends the five deposits to your testnet deposit address and writes a checklist to `reports/`. Run `setup` first (it funds the senders).
+
+```bash
+npm run conformance -- --deposit G... --memo-id 1234
+```
+
+* Each deposit is the base amount (`--amount`, default 1 XLM) plus its case number in stroops, so you can tell them apart.
+* Case 4 also carries a decoy memo (`--decoy-memo-id`, default your ID plus 1). Pick IDs you can check.
+* The report shows the ID each deposit carries on chain and what your system should credit. Then check your own ledger.
+* It also says whether your address sets SEP-29 `config.memo_required`.
+
 ## Files
 
 * [`src/tracker-before.ts`](src/tracker-before.ts): typical tracker, classic payments on Horizon, credits by memo
 * [`src/tracker-after.ts`](src/tracker-after.ts): the fix, transfer events on RPC, credits by `to_muxed_id`
+* [`src/conformance.ts`](src/conformance.ts): the same deposits, sent to any address
 * [`src/send-cases.ts`](src/send-cases.ts), [`src/exchange-withdraw.ts`](src/exchange-withdraw.ts): exchange deposits and withdrawals
 * [`src/anchor-cashout.ts`](src/anchor-cashout.ts), [`src/anchor-cashin.ts`](src/anchor-cashin.ts), [`src/anchor.ts`](src/anchor.ts): anchor flows (SEP-45, SEP-24)
 * [`contract/`](contract): the test smart wallet

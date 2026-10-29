@@ -1,3 +1,4 @@
 node_modules
 contract/target
 .state.json
+reports

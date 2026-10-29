@@ -11,6 +11,7 @@
     "cashout": "tsx src/anchor-cashout.ts",
     "cashin": "tsx src/anchor-cashin.ts",
     "all": "npm run setup && npm run send && npm run report && npm run withdraw && npm run cashout && npm run cashin",
+    "conformance": "tsx src/conformance.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

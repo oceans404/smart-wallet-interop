@@ -8,8 +8,8 @@
 
 Exchange: `GDMAYOLJXBUWR57S6VATXO55364SJP6KLPRCR7JQVWCRKACMXJJGBPHV`
 
-* Case 1: https://stellar.expert/explorer/testnet/tx/e00c5e158b098788796fed3fc379201b53f033ed97978c92c526679618cf2789
-* Case 2: https://stellar.expert/explorer/testnet/tx/5586dbc1e8963797652af8b373ae5829f3e06d00050a96bce81a3f221802cef9
-* Case 3: https://stellar.expert/explorer/testnet/tx/af91fe0ce84d1380205ec6eaafc5932fed2d270ae17c689dde0bf5b0de4fd98e
-* Case 4: https://stellar.expert/explorer/testnet/tx/3a3462ab9393cfad19cfae7371c703df6a7153f7984bbcbf021d54421dd179bb
-* Case 5: https://stellar.expert/explorer/testnet/tx/3b339ffed4af8da383da1e5d32bf54269405ad0c8b6377f37517d323826e1b7d
+* Case 1: https://stellar.expert/explorer/testnet/tx/71db71b7aeaaab854ecd585e7ed39cbd7ac739a82da40cea0bf9678247fbfe6b
+* Case 2: https://stellar.expert/explorer/testnet/tx/699c5a41d98da1a2aa4d5ad5570446dd385e00c1fc2e492bf343175af327fb18
+* Case 3: https://stellar.expert/explorer/testnet/tx/05dc1dcbe83e35ce893899a2cfc91daf2d186ff79347b72786ec84e98af290c0
+* Case 4: https://stellar.expert/explorer/testnet/tx/7cd51ac39c44044997d98fc3655e6dd77dc467b6dc91f436dd460552b8c32ab3
+* Case 5: https://stellar.expert/explorer/testnet/tx/7274d878cafdfe9371bb328f235066a933cf8d2dca2a1b21325391a6038ef302

@@ -11,6 +11,7 @@ import {
   Operation,
   TransactionBuilder,
   authorizeEntry,
+  nativeToScVal,
   rpc,
   scValToNative,
   xdr,
@@ -178,3 +179,36 @@ export async function xlmBalance(address: string, reader: string): Promise<bigin
 }
 
 export const stroopsToXlm =(stroops: bigint | string): string => (Number(stroops) / 1e7).toFixed(7);
+
+/** The accounts that send test deposits: a classic sender, the relayer that pays fees, and the smart wallet. */
+export interface Senders {
+  sender: Keypair;
+  relayer: Keypair;
+  owner: Keypair;
+  wallet: string;
+}
+
+export const sendersFrom = (state: State): Senders => ({
+  sender: Keypair.fromSecret(state.senderSecret),
+  relayer: Keypair.fromSecret(state.relayerSecret),
+  owner: Keypair.fromSecret(state.ownerSecret),
+  wallet: state.wallet,
+});
+
+/** A classic XLM payment from the sender, optionally with a memo. */
+export const classicPayment = (s: Senders, destination: string, stroops: bigint, memo?: Memo) =>
+  submitClassic(s.sender, [Operation.payment({ destination, asset: Asset.native(), amount: stroopsToXlm(stroops) })], memo);
+
+/** An XLM transfer from the smart wallet through the token contract, fee paid by the relayer. */
+export async function walletTransfer(s: Senders, to: string, stroops: bigint): Promise<{ hash: string; ledger: number }> {
+  const res = await invoke(
+    s.relayer,
+    Operation.invokeContractFunction({
+      contract: XLM_SAC,
+      function: "transfer",
+      args: [Address.fromString(s.wallet).toScVal(), Address.fromString(to).toScVal(), nativeToScVal(stroops, { type: "i128" })],
+    }),
+    walletSigner(s.owner),
+  );
+  return { hash: res.txHash, ledger: res.ledger };
+}

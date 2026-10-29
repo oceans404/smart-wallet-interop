@@ -35,7 +35,7 @@ Verified on testnet: a smart wallet cashed out through SDF's test anchor (Anchor
 
 ## Test cases
 
-All five verified on testnet with the [mock exchange](../../demos/mock-exchange).
+All five verified on testnet with the [mock exchange](../../demos/mock-exchange). To test your own testnet deposit address, run [`npm run conformance`](../../demos/mock-exchange#test-your-own-deposit-address).
 
 | # | Deposit | Expected |
 | --- | --- | --- |
