@@ -19,9 +19,9 @@ Fees are a third gap (a smart wallet can't pay its own), but a relayer can alway
 
 | Folder | Solves | Needs a protocol change? | Status |
 | --- | --- | --- | --- |
-| [`solutions/send`](solutions/send) | Send | No | Spec drafted |
+| [`solutions/send`](solutions/send) | Send | No | Spec drafted, verified on testnet |
 | [`solutions/receive`](solutions/receive) | Receive | Per-partner fix: no. Bridge: yes | Bridge proposals under discussion |
-| [`demos/testnet-muxed-deposit`](demos/testnet-muxed-deposit) | Proves send end to end | No | Planned |
+| [`demos/mock-exchange`](demos/mock-exchange) | Proves send end to end (exchange and anchor) on testnet | No | Verified on testnet |
 
 The short version: **send** is already solved at the protocol level (muxed addresses, [CAP-67](https://github.com/stellar/stellar-protocol/blob/master/core/cap-0067.md)) and needs exchanges and wallets to adopt it. **Receive** needs either each partner to upgrade or a protocol bridge.
 

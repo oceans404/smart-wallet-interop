@@ -1,0 +1,102 @@
+{
+  "exchange": "GDLR3V5ZKVXX7QRTIFKMUK6DDHZPDAU3RR4XCMEBGCUEB3XOCJYJ6M6W",
+  "cases": [
+    {
+      "id": 1,
+      "label": "Classic payment with ID memo 1001",
+      "hash": "40bb579f7b2de3bf316174f44c829ade2c76d7e5ef9067ad5fe4c5ef074e6c4a",
+      "ledger": 5450038,
+      "amountXlm": "1",
+      "expected": "1001"
+    },
+    {
+      "id": 2,
+      "label": "Classic payment to M address (ID 1002)",
+      "hash": "8e28a5f1a3feb57475d31e68a9692bca49c1239dade181793b1fd1ca24746a68",
+      "ledger": 5450039,
+      "amountXlm": "2",
+      "expected": "1002"
+    },
+    {
+      "id": 3,
+      "label": "Smart wallet transfer to M address (ID 1003)",
+      "hash": "6cc9b47f11a18ca14c814abf1826a4f3a0a5b3914256536ffb43971e6decc9eb",
+      "ledger": 5450040,
+      "amountXlm": "3",
+      "expected": "1003"
+    },
+    {
+      "id": 4,
+      "label": "Classic payment to M address (ID 1004) that also has memo 9999",
+      "hash": "80a7b2495a6433b82d7066ddf61932c6effd725567ece9796faf6a5524b6ff9c",
+      "ledger": 5450041,
+      "amountXlm": "4",
+      "expected": "1004"
+    },
+    {
+      "id": 5,
+      "label": "Smart wallet transfer to the plain G address",
+      "hash": "416de50e1bf15bb868129722b19b02969bc25c15880c2b6638aefb47e2a3b470",
+      "ledger": 5450042,
+      "amountXlm": "5",
+      "expected": null
+    }
+  ],
+  "events": [
+    {
+      "txHash": "40bb579f7b2de3bf316174f44c829ade2c76d7e5ef9067ad5fe4c5ef074e6c4a",
+      "ledger": 5450038,
+      "topics": [
+        "AAAADwAAAAh0cmFuc2Zlcg==",
+        "AAAAEgAAAAAAAAAATieD2AEbaGjpZpwubIIdsELq+WkWU4KiRgDMGy6wQhg=",
+        "AAAAEgAAAAAAAAAA1x3XuVVvf8IzQVTKK8MZ8vGCm4x5cTCBMKhA7u4ScJ8=",
+        "AAAADgAAAAZuYXRpdmUAAA=="
+      ],
+      "value": "AAAAEQAAAAEAAAACAAAADwAAAAZhbW91bnQAAAAAAAoAAAAAAAAAAAAAAAAAmJaAAAAADwAAAAt0b19tdXhlZF9pZAAAAAAFAAAAAAAAA+k="
+    },
+    {
+      "txHash": "8e28a5f1a3feb57475d31e68a9692bca49c1239dade181793b1fd1ca24746a68",
+      "ledger": 5450039,
+      "topics": [
+        "AAAADwAAAAh0cmFuc2Zlcg==",
+        "AAAAEgAAAAAAAAAATieD2AEbaGjpZpwubIIdsELq+WkWU4KiRgDMGy6wQhg=",
+        "AAAAEgAAAAAAAAAA1x3XuVVvf8IzQVTKK8MZ8vGCm4x5cTCBMKhA7u4ScJ8=",
+        "AAAADgAAAAZuYXRpdmUAAA=="
+      ],
+      "value": "AAAAEQAAAAEAAAACAAAADwAAAAZhbW91bnQAAAAAAAoAAAAAAAAAAAAAAAABMS0AAAAADwAAAAt0b19tdXhlZF9pZAAAAAAFAAAAAAAAA+o="
+    },
+    {
+      "txHash": "6cc9b47f11a18ca14c814abf1826a4f3a0a5b3914256536ffb43971e6decc9eb",
+      "ledger": 5450040,
+      "topics": [
+        "AAAADwAAAAh0cmFuc2Zlcg==",
+        "AAAAEgAAAAFFDMgijLkW1WERvBGGPlMCZdz+RoLrvOzXORFdt99QCA==",
+        "AAAAEgAAAAAAAAAA1x3XuVVvf8IzQVTKK8MZ8vGCm4x5cTCBMKhA7u4ScJ8=",
+        "AAAADgAAAAZuYXRpdmUAAA=="
+      ],
+      "value": "AAAAEQAAAAEAAAACAAAADwAAAAZhbW91bnQAAAAAAAoAAAAAAAAAAAAAAAABycOAAAAADwAAAAt0b19tdXhlZF9pZAAAAAAFAAAAAAAAA+s="
+    },
+    {
+      "txHash": "80a7b2495a6433b82d7066ddf61932c6effd725567ece9796faf6a5524b6ff9c",
+      "ledger": 5450041,
+      "topics": [
+        "AAAADwAAAAh0cmFuc2Zlcg==",
+        "AAAAEgAAAAAAAAAATieD2AEbaGjpZpwubIIdsELq+WkWU4KiRgDMGy6wQhg=",
+        "AAAAEgAAAAAAAAAA1x3XuVVvf8IzQVTKK8MZ8vGCm4x5cTCBMKhA7u4ScJ8=",
+        "AAAADgAAAAZuYXRpdmUAAA=="
+      ],
+      "value": "AAAAEQAAAAEAAAACAAAADwAAAAZhbW91bnQAAAAAAAoAAAAAAAAAAAAAAAACYloAAAAADwAAAAt0b19tdXhlZF9pZAAAAAAFAAAAAAAAA+w="
+    },
+    {
+      "txHash": "416de50e1bf15bb868129722b19b02969bc25c15880c2b6638aefb47e2a3b470",
+      "ledger": 5450042,
+      "topics": [
+        "AAAADwAAAAh0cmFuc2Zlcg==",
+        "AAAAEgAAAAFFDMgijLkW1WERvBGGPlMCZdz+RoLrvOzXORFdt99QCA==",
+        "AAAAEgAAAAAAAAAA1x3XuVVvf8IzQVTKK8MZ8vGCm4x5cTCBMKhA7u4ScJ8=",
+        "AAAADgAAAAZuYXRpdmUAAA=="
+      ],
+      "value": "AAAACgAAAAAAAAAAAAAAAAL68IA="
+    }
+  ]
+}

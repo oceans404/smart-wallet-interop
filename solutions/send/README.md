@@ -11,7 +11,7 @@ A smart wallet can't attach a memo, but it can pay a muxed (`M...`) address: the
 2. Build the `M...` address and call `transfer(from: C..., to: M..., amount)` on the token contract.
 3. Check the destination's [SEP-29](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0029.md) memo required flag and block sends without an ID.
 
-```js
+```ts
 const muxed = new MuxedAccount(new Account("G...", "0"), "1234").accountId(); // "M..."
 ```
 
@@ -31,14 +31,18 @@ The memo here is per transaction: it tells the anchor which payout to make.
 2. Match smart-wallet-to-muxed payments by the muxed ID. [Anchor Platform](https://github.com/stellar/java-stellar-anchor-sdk/blob/2a4b58c3c90d3ca79a7216bd09b92143b2248616/platform/src/main/java/org/stellar/anchor/platform/observer/stellar/DefaultPaymentListener.java) already does this (`isContractToMuxed`).
 3. Support [SEP-45](https://github.com/stellar/stellar-protocol/blob/master/ecosystem/sep-0045.md) sign-in for `C...` accounts (still Draft; Anchor Platform has it).
 
+Verified on testnet: a smart wallet cashed out through SDF's test anchor (Anchor Platform) and the anchor completed it. See the [demo](../../demos/mock-exchange).
+
 ## Test cases
+
+All five verified on testnet with the [mock exchange](../../demos/mock-exchange).
 
 | # | Deposit | Expected |
 | --- | --- | --- |
 | 1 | Classic payment with an ID memo | Credited to that ID |
 | 2 | Classic payment to the `M...` address | Credited to that ID |
 | 3 | Smart wallet `transfer` to the `M...` address | Credited to that ID |
-| 4 | Payment to the `M...` address that also has a memo | Credited to the `M...` ID (to verify on testnet) |
+| 4 | Payment to the `M...` address that also has a memo | Credited to the `M...` ID. A memo-only tracker credits the memo, the wrong user |
 | 5 | Smart wallet `transfer` to the plain `G...` address | Held as unattributed, with a claim or refund path |
 
 ## Still open

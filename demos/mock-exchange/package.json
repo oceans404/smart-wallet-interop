@@ -1,0 +1,23 @@
+{
+  "name": "mock-exchange",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:contract": "cd contract && stellar contract build",
+    "setup": "tsx src/setup.ts",
+    "send": "tsx src/send-cases.ts",
+    "report": "tsx src/report.ts",
+    "demo": "npm run setup && npm run send && npm run report",
+    "typecheck": "tsc --noEmit",
+    "anchor": "tsx src/anchor-cashout.ts"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^17.4.0",
+    "@stellar/js-xdr": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
