@@ -1,7 +1,10 @@
-# Protocol options for receive
+# Receive: exchanges and ramps paying smart wallets
 
-**Solves:** receive, so exchanges and ramps can pay smart wallets without rebuilding their payout systems.
-**Status:** proposals only. See [discussion #1763](https://github.com/orgs/stellar/discussions/1763).
+**Solves:** withdrawals into smart wallets.
+
+**Without a protocol change:** each exchange or ramp accepts `C...` addresses and pays out through the token contract's `transfer` instead of a classic payment. Works today, one partner at a time.
+
+**With a protocol change:** a bridge so partners can keep sending classic payments. Proposals only, see [discussion #1763](https://github.com/orgs/stellar/discussions/1763).
 
 | Option | Exchange changes | Status | Main concern |
 | --- | --- | --- | --- |

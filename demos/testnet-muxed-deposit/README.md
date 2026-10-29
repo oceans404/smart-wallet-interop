@@ -7,4 +7,4 @@ An end to end proof of the send fix on testnet:
 3. Call the token contract's `transfer` from the smart wallet to the `M...` address.
 4. Capture the transfer event (`to_muxed_id`) and the Horizon payment record.
 
-It also settles exchange kit test case 4 (muxed ID vs memo precedence).
+It also settles [send](../../solutions/send) test case 4 (muxed ID vs memo precedence).
